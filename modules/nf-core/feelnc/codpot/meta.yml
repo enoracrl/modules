@@ -1,0 +1,63 @@
+name: "feelnc_codpot"
+description: Compute the coding potential of a candidate transcript
+keywords:
+  - conding potential
+  - transcript
+tools:
+  - "feelnc":
+      description: "Annotation of lncRNAs based on a set of transcripts as input(basically a cufflink transcript.gtf file)"
+      homepage: "https://github.com/tderrien/FEELnc"
+      documentation: "https://academic.oup.com/nar/article/45/8/e57/2798184
+      tool_dev_url: "https://github.com/tderrien/FEELnc"
+      doi: "10.1093/nar/gkw1306"
+      licence: "['GNU General Public License v3.0']"
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+
+  - infile:
+      type: file
+      description: Specify the .GTF or .FASTA file  (such as a cufflinks transcript /merged .GTF or .FASTA file)
+      pattern : "*.{gtf, fa}"
+
+  - mrna:
+      type: file
+      description: Specify the annotation .GTF or .FASTA file  (file of protein coding transcripts .GTF or .FASTA file)
+      pattern : "*.{gtf, fa}"
+ 
+  - lncrna:
+      type: file
+      description: Specify a known set of lncRNA for training .GTF or .FASTA  [ default undef ]
+      pattern: "*.{gtf,fa}"
+      optional: true
+
+  - reference:
+      type: file
+      description: Genome file or directory with chr files (mandatory if input is .GTF) [ default undef ]
+      pattern: "*.fa"
+      optional: true
+
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  
+  - lncrna:
+      type: file
+      description: a .GTF/.FA file of the transcripts below the CPS (i.e the final set of lncRNAs).
+      pattern: "*.lncRNA.{gtf,fa}"
+
+  - mrna:
+      type: file
+      description: File containing software versions
+      pattern: "*.mRNA.{gtf,fa}"
+
+authors:
+  - "@tderrien"
