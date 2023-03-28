@@ -10,9 +10,13 @@ process FEELNC_CODPOT {
   path(reference)
 
   output:
-  tuple val(meta), path("feelnc_codpot_out/*.lncRNA.gtf"), emit: lncrna
-  tuple val(meta), path("feelnc_codpot_out/*.mRNA.gtf"), emit: mrna
+  tuple val(meta), path("feelnc_codpot_out/*.lncRNA.gtf"), emit: lncRNA
+  tuple val(meta), path("feelnc_codpot_out/*.mRNA.gtf"), emit: mRNA
 
+  when:
+  task.ext.when == null || task.ext.when
+
+  script:
   """
   grep "protein_coding" ${ref} > known_mRNA.gtf
   grep -v "protein_coding" ${ref} > known_lncRNA.gtf

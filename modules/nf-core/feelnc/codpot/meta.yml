@@ -4,13 +4,13 @@ keywords:
   - conding potential
   - transcript
 tools:
-  - "feelnc":
-      description: "Annotation of lncRNAs based on a set of transcripts as input(basically a cufflink transcript.gtf file)"
-      homepage: "https://github.com/tderrien/FEELnc"
-      documentation: "https://academic.oup.com/nar/article/45/8/e57/2798184
-      tool_dev_url: "https://github.com/tderrien/FEELnc"
-      doi: "10.1093/nar/gkw1306"
-      licence: "['GNU General Public License v3.0']"
+  - feelnc:
+      description: Annotation of lncRNAs based on a set of transcripts as input(basically a cufflink transcript.gtf file)
+      homepage: https://github.com/tderrien/FEELnc
+      documentation: https://academic.oup.com/nar/article/45/8/e57/2798184
+      tool_dev_url: https://github.com/tderrien/FEELnc
+      doi: 10.1093/nar/gkw1306
+      licence: [GNU General Public License v3.0]
 
 input:
   - meta:
